@@ -1,0 +1,71 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        description: 'Release notes for this version'
+        required: true
+        default: ''
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.VERSION }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Get build version
+      id: version
+      run: |
+        version=$(grep -oPm1 "(?<=<Version>)(.*)(?=</Version>)" GloriousBatteryMonitor.csproj)
+        echo "VERSION=$version" >> $GITHUB_OUTPUT
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Publish single file
+      run: dotnet publish --configuration Release --output ./publish -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --self-contained false -r win-x64
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: GloriousBatteryMonitor
+        path: ./publish/GloriousBatteryMonitor.exe
+
+  release:
+      needs: build
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write
+  
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+  
+        - name: Download build artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: GloriousBatteryMonitor
+            path: ./
+  
+        - name: Create release
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            VERSION: ${{ needs.build.outputs.version }}
+          run: |
+            gh release create "v${VERSION}" \
+              --title "Release v${VERSION}" \
+              --notes "${{ github.event.inputs.release_notes }}" \
+              ./GloriousBatteryMonitor.exe
