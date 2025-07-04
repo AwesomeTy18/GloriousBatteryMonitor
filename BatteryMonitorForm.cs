@@ -8,6 +8,7 @@ namespace GloriousBatteryMonitor
     {
         private System.Windows.Forms.Timer _refreshTimer = new System.Windows.Forms.Timer();
         private int _lastKnownBatteryLevel = -1;
+        private bool _wasCharging = false;
         private bool _lowBatteryNotified = false;
         private string _lastConnectedDeviceName = "Device";
 
@@ -26,6 +27,7 @@ namespace GloriousBatteryMonitor
                 this.Hide();
                 this.ShowInTaskbar = false;
             }
+            DisplayLastChargeInfo();
             Task.Run(CheckBatteryStatusAsync);
         }
 
@@ -46,6 +48,28 @@ namespace GloriousBatteryMonitor
                 $"  Launch at Startup: {Properties.Settings.Default.StartWithWindows}\n" +
                 $"  Start Minimized: {Properties.Settings.Default.StartMinimized}\n" +
                 $"  Close to Tray: {Properties.Settings.Default.CloseToTray}");
+        }
+
+        private void DisplayLastChargeInfo()
+        {
+            string lastChargeTimeStr = Properties.Settings.Default.LastChargeTimeISO;
+            int lastChargeLevel = Properties.Settings.Default.LastChargeLevel;
+
+            if (!string.IsNullOrEmpty(lastChargeTimeStr) && lastChargeLevel > 0)
+            {
+                if (DateTime.TryParse(lastChargeTimeStr, out DateTime lastChargeTime))
+                {
+                    lblLastCharge.Text = $"Last charged to {lastChargeLevel}% on {lastChargeTime:D} at {lastChargeTime:t}";
+                }
+                else
+                {
+                    lblLastCharge.Text = "Last charge time: Not yet recorded.";
+                }
+            }
+            else
+            {
+                lblLastCharge.Text = "Last charge time: Not yet recorded.";
+            }
         }
 
         private async void btnRefresh_Click(object sender, EventArgs e)
@@ -145,6 +169,7 @@ namespace GloriousBatteryMonitor
                     notifyIcon1.Icon = SystemIcons.Warning;
                     notifyIcon1.Text = "No supported device found";
                     _lastKnownBatteryLevel = -1;
+                    _wasCharging = false;
                 }
                 else
                 {
@@ -161,11 +186,22 @@ namespace GloriousBatteryMonitor
                     }
                     else
                     {
+                        if (_wasCharging && !isCharging)
+                        {
+                            Properties.Settings.Default.LastChargeLevel = batteryLevel;
+                            Properties.Settings.Default.LastChargeTimeISO = DateTime.Now.ToString("o");
+                            Properties.Settings.Default.Save();
+                            DisplayLastChargeInfo();
+                            Debug.WriteLine($"Saved last charge: {batteryLevel}% at {DateTime.Now}");
+                        }
+
                         lblStatus.Text = $"Device found ({result.ConnectionType}). Last updated: {DateTime.Now:T}";
                         lblBatteryLevel.Text = $"Battery Level: {batteryLevel}%";
                         _lastKnownBatteryLevel = batteryLevel;
                         notifyIcon1.Text = $"{result.DeviceName}: {batteryLevel}%" + (isCharging ? " (Charging)" : "");
                     }
+
+                    _wasCharging = isCharging;
 
                     lblDeviceName.Text = $"Mouse: {result.DeviceName}";
                     batteryProgressBar.Value = batteryLevel;

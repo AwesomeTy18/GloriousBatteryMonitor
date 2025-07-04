@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Properties {
+namespace GloriousBatteryMonitor.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -80,6 +80,30 @@ namespace Properties {
             }
             set {
                 this["CloseToTray"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastChargeLevel {
+            get {
+                return ((int)(this["LastChargeLevel"]));
+            }
+            set {
+                this["LastChargeLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastChargeTimeISO {
+            get {
+                return ((string)(this["LastChargeTimeISO"]));
+            }
+            set {
+                this["LastChargeTimeISO"] = value;
             }
         }
     }

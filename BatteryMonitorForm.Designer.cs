@@ -21,6 +21,7 @@
         private System.Windows.Forms.ToolStripMenuItem refreshNowToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Label lblDeviceName;
+        private System.Windows.Forms.Label lblLastCharge;
 
         protected override void Dispose(bool disposing)
         {
@@ -52,6 +53,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
             lblDeviceName = new Label();
+            lblLastCharge = new Label();
             groupBoxStatus.SuspendLayout();
             menuStrip1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
@@ -123,7 +125,7 @@
             // groupBoxStatus
             // 
             groupBoxStatus.Controls.Add(lblStatus);
-            groupBoxStatus.Location = new Point(17, 217);
+            groupBoxStatus.Location = new Point(17, 240);
             groupBoxStatus.Name = "groupBoxStatus";
             groupBoxStatus.Size = new Size(390, 61);
             groupBoxStatus.TabIndex = 6;
@@ -210,11 +212,22 @@
             lblDeviceName.TabIndex = 8;
             lblDeviceName.Text = "Mouse: --";
             // 
+            // lblLastCharge
+            // 
+            this.lblLastCharge.AutoSize = true;
+            this.lblLastCharge.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            this.lblLastCharge.Location = new System.Drawing.Point(14, 202);
+            this.lblLastCharge.Name = "lblLastCharge";
+            this.lblLastCharge.Size = new System.Drawing.Size(176, 15);
+            this.lblLastCharge.TabIndex = 9;
+            this.lblLastCharge.Text = "Last charge time: Not recorded.";
+            // 
             // BatteryMonitorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(434, 289);
+            ClientSize = new Size(434, 312);
+            Controls.Add(this.lblLastCharge);
             Controls.Add(lblDeviceName);
             Controls.Add(groupBoxStatus);
             Controls.Add(btnRefresh);
