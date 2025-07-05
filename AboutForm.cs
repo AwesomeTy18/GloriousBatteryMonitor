@@ -7,7 +7,7 @@ namespace GloriousBatteryMonitor
         public AboutForm()
         {
             InitializeComponent();
-            lblVersion.Text = $"Version {Application.ProductVersion}";
+            lblVersion.Text = $"Version {Application.ProductVersion.Split('+')[0]}";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
