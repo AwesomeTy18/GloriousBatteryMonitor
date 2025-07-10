@@ -180,7 +180,7 @@ namespace GloriousBatteryMonitor
                     if (result.IsTransient && _lastKnownBatteryLevel > 10)
                     {
                         batteryLevel = _lastKnownBatteryLevel > 0 ? _lastKnownBatteryLevel : 0;
-                        lblStatus.Text = $"{result.DeviceName} ({result.ConnectionType}) found, but failed to get status.\n(Is the device on?)";
+                        lblStatus.Text = $"Device found ({result.ConnectionType}), but failed to get battery status.\n(Is the device on?) Last updated: {DateTime.Now:T}";
                         lblBatteryLevel.Text = $"Battery Level: {batteryLevel}% (Last known)";
                         notifyIcon1.Text = $"Battery: {batteryLevel}% (Last known)" + (isCharging ? " (Charging)" : "");
                     }

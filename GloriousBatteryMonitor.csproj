@@ -7,9 +7,14 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.2.1</Version>
+    <Version>0.2.2</Version>
     <Description>A lightweight utility to monitor the battery level of your Glorious mouse.</Description>
+    <ApplicationIcon>icon-100.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icon-100.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HidSharp" Version="2.1.0" />
@@ -25,6 +30,13 @@
     <Compile Update="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
