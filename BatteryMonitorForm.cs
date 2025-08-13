@@ -59,7 +59,7 @@ namespace GloriousBatteryMonitor
             {
                 if (DateTime.TryParse(lastChargeTimeStr, out DateTime lastChargeTime))
                 {
-                    lblLastCharge.Text = $"Last charged to {lastChargeLevel}% on {lastChargeTime:D} at {lastChargeTime:t}";
+                    lblLastCharge.Text = $"Last charged to {lastChargeLevel}% on {lastChargeTime:m} at {lastChargeTime:t}";
                 }
                 else
                 {
@@ -167,7 +167,7 @@ namespace GloriousBatteryMonitor
                     batteryProgressBar.Value = 0;
                     this.Icon = SystemIcons.Warning;
                     notifyIcon1.Icon = SystemIcons.Warning;
-                    notifyIcon1.Text = "No supported device found";
+                    notifyIcon1.Text = "No supported device found.";
                     _lastKnownBatteryLevel = -1;
                     _wasCharging = false;
                 }
@@ -180,7 +180,7 @@ namespace GloriousBatteryMonitor
                     if (result.IsTransient && _lastKnownBatteryLevel > 10)
                     {
                         batteryLevel = _lastKnownBatteryLevel > 0 ? _lastKnownBatteryLevel : 0;
-                        lblStatus.Text = $"Device found ({result.ConnectionType}), but failed to get battery status.\n(Is the device on?) Last updated: {DateTime.Now:T}";
+                        lblStatus.Text = $"{result.ConnectionType} device found inactive at {DateTime.Now:T}.";
                         lblBatteryLevel.Text = $"Battery Level: {batteryLevel}% (Last known)";
                         notifyIcon1.Text = $"Battery: {batteryLevel}% (Last known)" + (isCharging ? " (Charging)" : "");
                     }
@@ -195,7 +195,7 @@ namespace GloriousBatteryMonitor
                             Debug.WriteLine($"Saved last charge: {batteryLevel}% at {DateTime.Now}");
                         }
 
-                        lblStatus.Text = $"Device found ({result.ConnectionType}). Last updated: {DateTime.Now:T}";
+                        lblStatus.Text = $"{result.ConnectionType} device found at {DateTime.Now:T}.";
                         lblBatteryLevel.Text = $"Battery Level: {batteryLevel}%";
                         _lastKnownBatteryLevel = batteryLevel;
                         notifyIcon1.Text = $"{result.DeviceName}: {batteryLevel}%" + (isCharging ? " (Charging)" : "");
@@ -242,6 +242,11 @@ namespace GloriousBatteryMonitor
             {
                 _lowBatteryNotified = false;
             }
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

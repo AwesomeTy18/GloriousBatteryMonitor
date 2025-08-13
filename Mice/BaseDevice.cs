@@ -15,7 +15,7 @@ namespace GloriousBatteryMonitor.Mice
             var deviceChecks = new[]
             {
                 new { Name = "Wired", ProductId = WiredProductId },
-                new { Name = "Wireless Receiver", ProductId = ReceiverProductId }
+                new { Name = "Wireless", ProductId = ReceiverProductId }
             };
 
             foreach (var check in deviceChecks)
@@ -37,7 +37,7 @@ namespace GloriousBatteryMonitor.Mice
                             BatteryLevel = level,
                             IsCharging = charging,
                             // When mouse is switched off and not plugged in or dead
-                            IsTransient = check.Name == "Wireless Receiver" && level == 0
+                            IsTransient = check.Name == "Wireless" && level == 0
                         };
                     }
                 }

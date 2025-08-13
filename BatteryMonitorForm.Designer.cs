@@ -119,7 +119,7 @@
             lblStatus.Padding = new Padding(5);
             lblStatus.Size = new Size(384, 39);
             lblStatus.TabIndex = 5;
-            lblStatus.Text = "Status: Initializing...";
+            lblStatus.Text = "Initializing...";
             lblStatus.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // groupBoxStatus
@@ -214,20 +214,20 @@
             // 
             // lblLastCharge
             // 
-            this.lblLastCharge.AutoSize = true;
-            this.lblLastCharge.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.lblLastCharge.Location = new System.Drawing.Point(14, 202);
-            this.lblLastCharge.Name = "lblLastCharge";
-            this.lblLastCharge.Size = new System.Drawing.Size(176, 15);
-            this.lblLastCharge.TabIndex = 9;
-            this.lblLastCharge.Text = "Last charge time: Not recorded.";
+            lblLastCharge.AutoSize = true;
+            lblLastCharge.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblLastCharge.Location = new System.Drawing.Point(14, 202);
+            lblLastCharge.Name = "lblLastCharge";
+            lblLastCharge.Size = new System.Drawing.Size(176, 15);
+            lblLastCharge.TabIndex = 9;
+            lblLastCharge.Text = "Last charge time: Not recorded.";
             // 
             // BatteryMonitorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(434, 312);
-            Controls.Add(this.lblLastCharge);
+            Controls.Add(lblLastCharge);
             Controls.Add(lblDeviceName);
             Controls.Add(groupBoxStatus);
             Controls.Add(btnRefresh);

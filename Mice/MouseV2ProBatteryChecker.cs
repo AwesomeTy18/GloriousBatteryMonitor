@@ -21,7 +21,7 @@ namespace GloriousBatteryMonitor.Mice
                         var command = new byte[] { 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x83 };
                         var outputReport = new byte[device.GetMaxFeatureReportLength()];
                         Buffer.BlockCopy(command, 0, outputReport, 0, command.Length);
-                        Debug.WriteLine($"  Sending command {BitConverter.ToString(command)} to device.");
+                        Debug.WriteLine($"Sending command {BitConverter.ToString(command)}.");
                         stream.SetFeature(outputReport);
 
                         Task.Delay(50).Wait();
@@ -29,12 +29,14 @@ namespace GloriousBatteryMonitor.Mice
                         var inputReport = new byte[65];
                         inputReport[0] = REPORT_ID;
                         stream.GetFeature(inputReport);
-                        Debug.WriteLine("  Received Report: " + BitConverter.ToString(inputReport));
+                        Debug.WriteLine($"Received report {BitConverter.ToString(inputReport)}.");
 
                         if (inputReport[6] == 0x83)
                         {
                             isCharging = inputReport[7] == 1;
                             batteryLevel = inputReport[8];
+                            Debug.WriteLine($"  Battery Level: {batteryLevel}%\n" + 
+                                $"  Charging: {isCharging}");
                             return true;
                         }
                     }
