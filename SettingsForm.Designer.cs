@@ -14,6 +14,8 @@
         private System.Windows.Forms.CheckBox chkStartWithWindows;
         private System.Windows.Forms.CheckBox chkStartMinimized;
         private System.Windows.Forms.CheckBox chkCloseToTray;
+        //private System.Windows.Forms.ComboBox cmbChooseTheme;
+        private System.Windows.Forms.Label label3;
 
         protected override void Dispose(bool disposing)
         {
@@ -26,176 +28,189 @@
 
         private void InitializeComponent()
         {
-            this.lblThreshold = new System.Windows.Forms.Label();
-            this.numThreshold = new System.Windows.Forms.NumericUpDown();
-            this.lblInterval = new System.Windows.Forms.Label();
-            this.numInterval = new System.Windows.Forms.NumericUpDown();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.chkStartWithWindows = new System.Windows.Forms.CheckBox();
-            this.chkStartMinimized = new System.Windows.Forms.CheckBox();
-            this.chkCloseToTray = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numThreshold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numInterval)).BeginInit();
-            this.SuspendLayout();
+            lblThreshold = new Label();
+            numThreshold = new NumericUpDown();
+            lblInterval = new Label();
+            numInterval = new NumericUpDown();
+            btnSave = new Button();
+            btnCancel = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            chkStartWithWindows = new CheckBox();
+            chkStartMinimized = new CheckBox();
+            chkCloseToTray = new CheckBox();
+            label3 = new Label();
+            ((System.ComponentModel.ISupportInitialize)numThreshold).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numInterval).BeginInit();
+            SuspendLayout();
             // 
             // lblThreshold
             // 
-            this.lblThreshold.AutoSize = true;
-            this.lblThreshold.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThreshold.Location = new System.Drawing.Point(12, 23);
-            this.lblThreshold.Name = "lblThreshold";
-            this.lblThreshold.Size = new System.Drawing.Size(202, 20);
-            this.lblThreshold.TabIndex = 0;
-            this.lblThreshold.Text = "Low Battery Notification at:";
+            lblThreshold.AutoSize = true;
+            lblThreshold.Font = new Font("Segoe UI Variable Display", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblThreshold.Location = new Point(14, 15);
+            lblThreshold.Margin = new Padding(4, 0, 4, 0);
+            lblThreshold.Name = "lblThreshold";
+            lblThreshold.Size = new Size(185, 20);
+            lblThreshold.TabIndex = 0;
+            lblThreshold.Text = "Low Battery Notification at:";
             // 
             // numThreshold
             // 
-            this.numThreshold.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.numThreshold.Location = new System.Drawing.Point(220, 21);
-            this.numThreshold.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numThreshold.Name = "numThreshold";
-            this.numThreshold.Size = new System.Drawing.Size(61, 27);
-            this.numThreshold.TabIndex = 1;
-            this.numThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numThreshold.Font = new Font("Segoe UI Variable Display", 11.25F);
+            numThreshold.Location = new Point(207, 13);
+            numThreshold.Margin = new Padding(4, 3, 4, 3);
+            numThreshold.Minimum = new decimal(new int[] { 5, 0, 0, 0 });
+            numThreshold.Name = "numThreshold";
+            numThreshold.Size = new Size(71, 27);
+            numThreshold.TabIndex = 1;
+            numThreshold.TextAlign = HorizontalAlignment.Center;
+            numThreshold.Value = new decimal(new int[] { 5, 0, 0, 0 });
             // 
             // lblInterval
             // 
-            this.lblInterval.AutoSize = true;
-            this.lblInterval.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.lblInterval.Location = new System.Drawing.Point(12, 67);
-            this.lblInterval.Name = "lblInterval";
-            this.lblInterval.Size = new System.Drawing.Size(115, 20);
-            this.lblInterval.TabIndex = 2;
-            this.lblInterval.Text = "Update Interval:";
+            lblInterval.AutoSize = true;
+            lblInterval.Font = new Font("Segoe UI Variable Display", 11.25F);
+            lblInterval.Location = new Point(14, 53);
+            lblInterval.Margin = new Padding(4, 0, 4, 0);
+            lblInterval.Name = "lblInterval";
+            lblInterval.Size = new Size(111, 20);
+            lblInterval.TabIndex = 2;
+            lblInterval.Text = "Update Interval:";
             // 
             // numInterval
             // 
-            this.numInterval.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.numInterval.Location = new System.Drawing.Point(220, 65);
-            this.numInterval.Maximum = new decimal(new int[] {
-            86400, // max every 24h
-            0,
-            0,
-            0});
-            this.numInterval.Minimum = new decimal(new int[] {
-            1, // min every 1s
-            0,
-            0,
-            0});
-            this.numInterval.Name = "numInterval";
-            this.numInterval.Size = new System.Drawing.Size(61, 27);
-            this.numInterval.TabIndex = 3;
-            this.numInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numInterval.Font = new Font("Segoe UI Variable Display", 11.25F);
+            numInterval.Location = new Point(133, 51);
+            numInterval.Margin = new Padding(4, 3, 4, 3);
+            numInterval.Maximum = new decimal(new int[] { 86400, 0, 0, 0 });
+            numInterval.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numInterval.Name = "numInterval";
+            numInterval.Size = new Size(71, 27);
+            numInterval.TabIndex = 3;
+            numInterval.TextAlign = HorizontalAlignment.Center;
+            numInterval.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(186, 205);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSave.Location = new Point(139, 167);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(88, 27);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(267, 205);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.Location = new Point(234, 167);
+            btnCancel.Margin = new Padding(4, 3, 4, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(88, 27);
+            btnCancel.TabIndex = 5;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label1.Location = new System.Drawing.Point(287, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "%";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Variable Display", 11.25F);
+            label1.Location = new Point(286, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(21, 20);
+            label1.TabIndex = 6;
+            label1.Text = "%";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.label2.Location = new System.Drawing.Point(287, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "seconds";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Variable Display", 11.25F);
+            label2.Location = new Point(212, 53);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(65, 20);
+            label2.TabIndex = 7;
+            label2.Text = "seconds";
             // 
             // chkStartWithWindows
             // 
-            this.chkStartWithWindows.AutoSize = true;
-            this.chkStartWithWindows.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.chkStartWithWindows.Location = new System.Drawing.Point(16, 110);
-            this.chkStartWithWindows.Name = "chkStartWithWindows";
-            this.chkStartWithWindows.Size = new System.Drawing.Size(158, 24);
-            this.chkStartWithWindows.TabIndex = 8;
-            this.chkStartWithWindows.Text = "Start with Windows";
-            this.chkStartWithWindows.UseVisualStyleBackColor = true;
+            chkStartWithWindows.AutoSize = true;
+            chkStartWithWindows.Font = new Font("Segoe UI Variable Display", 11.25F);
+            chkStartWithWindows.Location = new Point(14, 84);
+            chkStartWithWindows.Margin = new Padding(4, 3, 4, 3);
+            chkStartWithWindows.Name = "chkStartWithWindows";
+            chkStartWithWindows.Size = new Size(154, 24);
+            chkStartWithWindows.TabIndex = 8;
+            chkStartWithWindows.Text = "Start with Windows";
+            chkStartWithWindows.UseVisualStyleBackColor = true;
             // 
             // chkStartMinimized
             // 
-            this.chkStartMinimized.AutoSize = true;
-            this.chkStartMinimized.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.chkStartMinimized.Location = new System.Drawing.Point(16, 140);
-            this.chkStartMinimized.Name = "chkStartMinimized";
-            this.chkStartMinimized.Size = new System.Drawing.Size(133, 24);
-            this.chkStartMinimized.TabIndex = 9;
-            this.chkStartMinimized.Text = "Start Minimized";
-            this.chkStartMinimized.UseVisualStyleBackColor = true;
-            //
+            chkStartMinimized.AutoSize = true;
+            chkStartMinimized.Font = new Font("Segoe UI Variable Display", 11.25F);
+            chkStartMinimized.Location = new Point(14, 114);
+            chkStartMinimized.Margin = new Padding(4, 3, 4, 3);
+            chkStartMinimized.Name = "chkStartMinimized";
+            chkStartMinimized.Size = new Size(128, 24);
+            chkStartMinimized.TabIndex = 9;
+            chkStartMinimized.Text = "Start Minimized";
+            chkStartMinimized.UseVisualStyleBackColor = true;
+            // 
             // chkCloseToTray
-            //
-            this.chkCloseToTray.AutoSize = true;
-            this.chkCloseToTray.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.chkCloseToTray.Location = new System.Drawing.Point(16, 170);
-            this.chkCloseToTray.Name = "chkCloseToTray";
-            this.chkCloseToTray.Size = new System.Drawing.Size(225, 24);
-            this.chkCloseToTray.TabIndex = 10;
-            this.chkCloseToTray.Text = "Close to Tray";
-            this.chkCloseToTray.UseVisualStyleBackColor = true;
+            // 
+            chkCloseToTray.AutoSize = true;
+            chkCloseToTray.Font = new Font("Segoe UI Variable Display", 11.25F);
+            chkCloseToTray.Location = new Point(14, 144);
+            chkCloseToTray.Margin = new Padding(4, 3, 4, 3);
+            chkCloseToTray.Name = "chkCloseToTray";
+            chkCloseToTray.Size = new Size(115, 24);
+            chkCloseToTray.TabIndex = 10;
+            chkCloseToTray.Text = "Close to Tray";
+            chkCloseToTray.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.Location = new Point(0, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 11;
             // 
             // SettingsForm
             // 
-            this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(359, 240);
-            this.Controls.Add(this.chkCloseToTray);
-            this.Controls.Add(this.chkStartMinimized);
-            this.Controls.Add(this.chkStartWithWindows);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.numInterval);
-            this.Controls.Add(this.lblInterval);
-            this.Controls.Add(this.numThreshold);
-            this.Controls.Add(this.lblThreshold);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "SettingsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Settings";
-            ((System.ComponentModel.ISupportInitialize)(this.numThreshold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numInterval)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnSave;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
+            ClientSize = new Size(329, 209);
+            Controls.Add(chkCloseToTray);
+            Controls.Add(chkStartMinimized);
+            Controls.Add(chkStartWithWindows);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(numInterval);
+            Controls.Add(lblInterval);
+            Controls.Add(numThreshold);
+            Controls.Add(lblThreshold);
+            Controls.Add(label3);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "SettingsForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Settings";
+            ((System.ComponentModel.ISupportInitialize)numThreshold).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numInterval).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }

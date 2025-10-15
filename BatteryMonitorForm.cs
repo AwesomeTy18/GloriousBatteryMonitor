@@ -47,7 +47,7 @@ namespace GloriousBatteryMonitor
                 $"  Threshold: {Properties.Settings.Default.NotificationThreshold}%\n" +
                 $"  Launch at Startup: {Properties.Settings.Default.StartWithWindows}\n" +
                 $"  Start Minimized: {Properties.Settings.Default.StartMinimized}\n" +
-                $"  Close to Tray: {Properties.Settings.Default.CloseToTray}");
+                $"  Close to Tray: {Properties.Settings.Default.CloseToTray}\n");
         }
 
         private void DisplayLastChargeInfo()
@@ -161,9 +161,8 @@ namespace GloriousBatteryMonitor
                 if (!result.IsConnected)
                 {
                     lblStatus.Text = "No supported device found.";
-                    lblDeviceName.Text = "Mouse: --";
-                    lblBatteryLevel.Text = "Battery Level: --";
-                    lblChargingStatus.Text = "Charging: --";
+                    lblBattery.Text = "--%";
+                    lblChargingStatus.Text = "";
                     batteryProgressBar.Value = 0;
                     this.Icon = SystemIcons.Warning;
                     notifyIcon1.Icon = SystemIcons.Warning;
@@ -181,8 +180,8 @@ namespace GloriousBatteryMonitor
                     {
                         batteryLevel = _lastKnownBatteryLevel > 0 ? _lastKnownBatteryLevel : 0;
                         lblStatus.Text = $"{result.ConnectionType} device found inactive at {DateTime.Now:T}.";
-                        lblBatteryLevel.Text = $"Battery Level: {batteryLevel}% (Last known)";
-                        notifyIcon1.Text = $"Battery: {batteryLevel}% (Last known)" + (isCharging ? " (Charging)" : "");
+                        lblBattery.Text = $"{result.DeviceName}: {batteryLevel}%";
+                        notifyIcon1.Text = $"{result.DeviceName}: {batteryLevel}%" + (isCharging ? " (Charging)" : "");
                     }
                     else
                     {
@@ -196,17 +195,16 @@ namespace GloriousBatteryMonitor
                         }
 
                         lblStatus.Text = $"{result.ConnectionType} device found at {DateTime.Now:T}.";
-                        lblBatteryLevel.Text = $"Battery Level: {batteryLevel}%";
+                        lblBattery.Text = $"{result.DeviceName}: {batteryLevel}%";
                         _lastKnownBatteryLevel = batteryLevel;
                         notifyIcon1.Text = $"{result.DeviceName}: {batteryLevel}%" + (isCharging ? " (Charging)" : "");
                     }
 
                     _wasCharging = isCharging;
 
-                    lblDeviceName.Text = $"Mouse: {result.DeviceName}";
                     batteryProgressBar.Value = batteryLevel;
                     batteryProgressBar.IsCharging = isCharging;
-                    lblChargingStatus.Text = isCharging ? "Charging: Yes" : "Charging: No";
+                    lblChargingStatus.Text = isCharging ? "Charging" : "";
 
                     Icon newIcon = IconFactory.CreateBatteryIcon(batteryLevel, isCharging);
                     Icon? oldIcon = this.Icon;
@@ -242,11 +240,6 @@ namespace GloriousBatteryMonitor
             {
                 _lowBatteryNotified = false;
             }
-        }
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

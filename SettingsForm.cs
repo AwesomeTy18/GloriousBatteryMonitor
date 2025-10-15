@@ -15,6 +15,7 @@ namespace GloriousBatteryMonitor
             chkStartWithWindows.Checked = Properties.Settings.Default.StartWithWindows;
             chkStartMinimized.Checked = Properties.Settings.Default.StartMinimized;
             chkCloseToTray.Checked = Properties.Settings.Default.CloseToTray;
+            //cmbChooseTheme.SelectedIndex = Properties.Settings.Default.AppTheme;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -24,6 +25,7 @@ namespace GloriousBatteryMonitor
             Properties.Settings.Default.StartWithWindows = chkStartWithWindows.Checked;
             Properties.Settings.Default.StartMinimized = chkStartMinimized.Checked;
             Properties.Settings.Default.CloseToTray = chkCloseToTray.Checked;
+            //Properties.Settings.Default.AppTheme = cmbChooseTheme.SelectedIndex;
             Properties.Settings.Default.Save();
 
             StartupManager.SetStartup(chkStartWithWindows.Checked);

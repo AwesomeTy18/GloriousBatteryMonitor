@@ -3,9 +3,8 @@
     partial class BatteryMonitorForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Label lblTitle;
         private GloriousBatteryMonitor.BatteryProgressBar batteryProgressBar;
-        private System.Windows.Forms.Label lblBatteryLevel;
+        private System.Windows.Forms.Label lblBattery;
         private System.Windows.Forms.Label lblChargingStatus;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label lblStatus;
@@ -20,7 +19,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshNowToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.Label lblDeviceName;
         private System.Windows.Forms.Label lblLastCharge;
 
         protected override void Dispose(bool disposing)
@@ -35,9 +33,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            lblTitle = new Label();
             batteryProgressBar = new BatteryProgressBar();
-            lblBatteryLevel = new Label();
+            lblBattery = new Label();
             lblChargingStatus = new Label();
             btnRefresh = new Button();
             lblStatus = new Label();
@@ -52,57 +49,44 @@
             refreshNowToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            lblDeviceName = new Label();
             lblLastCharge = new Label();
             groupBoxStatus.SuspendLayout();
             menuStrip1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // lblTitle
-            // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(12, 35);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(273, 30);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "Glorious Battery Monitor";
-            // 
             // batteryProgressBar
             // 
             batteryProgressBar.IsCharging = false;
-            batteryProgressBar.Location = new Point(17, 137);
+            batteryProgressBar.Location = new Point(17, 54);
             batteryProgressBar.Name = "batteryProgressBar";
             batteryProgressBar.Size = new Size(390, 23);
             batteryProgressBar.TabIndex = 1;
             batteryProgressBar.Text = "batteryProgressBar1";
             batteryProgressBar.Value = 0;
             // 
-            // lblBatteryLevel
+            // lblBattery
             // 
-            lblBatteryLevel.AutoSize = true;
-            lblBatteryLevel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblBatteryLevel.Location = new Point(13, 113);
-            lblBatteryLevel.Name = "lblBatteryLevel";
-            lblBatteryLevel.Size = new Size(118, 21);
-            lblBatteryLevel.TabIndex = 2;
-            lblBatteryLevel.Text = "Battery Level: --";
+            lblBattery.AutoSize = true;
+            lblBattery.Font = new Font("Segoe UI Variable Display", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblBattery.Location = new Point(17, 30);
+            lblBattery.Name = "lblBattery";
+            lblBattery.Size = new Size(35, 21);
+            lblBattery.TabIndex = 2;
+            lblBattery.Text = "--%";
             // 
             // lblChargingStatus
             // 
-            lblChargingStatus.AutoSize = true;
-            lblChargingStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblChargingStatus.Location = new Point(13, 174);
+            lblChargingStatus.Font = new Font("Segoe UI Variable Display", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblChargingStatus.Location = new Point(332, 30);
             lblChargingStatus.Name = "lblChargingStatus";
-            lblChargingStatus.Size = new Size(93, 21);
+            lblChargingStatus.Size = new Size(75, 21);
             lblChargingStatus.TabIndex = 3;
-            lblChargingStatus.Text = "Charging: --";
             // 
             // btnRefresh
             // 
-            btnRefresh.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRefresh.Location = new Point(332, 171);
+            btnRefresh.Font = new Font("Segoe UI Variable Display", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRefresh.Location = new Point(332, 88);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(75, 28);
             btnRefresh.TabIndex = 4;
@@ -113,7 +97,7 @@
             // lblStatus
             // 
             lblStatus.Dock = DockStyle.Fill;
-            lblStatus.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStatus.Font = new Font("Segoe UI Variable Display", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStatus.Location = new Point(3, 19);
             lblStatus.Name = "lblStatus";
             lblStatus.Padding = new Padding(5);
@@ -125,7 +109,7 @@
             // groupBoxStatus
             // 
             groupBoxStatus.Controls.Add(lblStatus);
-            groupBoxStatus.Location = new Point(17, 240);
+            groupBoxStatus.Location = new Point(17, 122);
             groupBoxStatus.Name = "groupBoxStatus";
             groupBoxStatus.Size = new Size(390, 61);
             groupBoxStatus.TabIndex = 6;
@@ -137,7 +121,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(434, 24);
+            menuStrip1.Size = new Size(424, 24);
             menuStrip1.TabIndex = 7;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -151,14 +135,14 @@
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(125, 22);
+            settingsToolStripMenuItem.Size = new Size(180, 22);
             settingsToolStripMenuItem.Text = "&Settings...";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(125, 22);
+            aboutToolStripMenuItem.Size = new Size(180, 22);
             aboutToolStripMenuItem.Text = "&About...";
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
@@ -177,7 +161,7 @@
             // 
             // showToolStripMenuItem
             // 
-            showToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            showToolStripMenuItem.Font = new Font("Segoe UI Variable Display", 9F, FontStyle.Bold);
             showToolStripMenuItem.Name = "showToolStripMenuItem";
             showToolStripMenuItem.Size = new Size(141, 22);
             showToolStripMenuItem.Text = "&Show";
@@ -202,41 +186,29 @@
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
-            // lblDeviceName
-            // 
-            lblDeviceName.AutoSize = true;
-            lblDeviceName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDeviceName.Location = new Point(13, 75);
-            lblDeviceName.Name = "lblDeviceName";
-            lblDeviceName.Size = new Size(76, 21);
-            lblDeviceName.TabIndex = 8;
-            lblDeviceName.Text = "Mouse: --";
-            // 
             // lblLastCharge
             // 
             lblLastCharge.AutoSize = true;
-            lblLastCharge.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblLastCharge.Location = new System.Drawing.Point(14, 202);
+            lblLastCharge.Font = new Font("Segoe UI Variable Display", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblLastCharge.Location = new Point(17, 88);
             lblLastCharge.Name = "lblLastCharge";
-            lblLastCharge.Size = new System.Drawing.Size(176, 15);
+            lblLastCharge.Size = new Size(171, 16);
             lblLastCharge.TabIndex = 9;
             lblLastCharge.Text = "Last charge time: Not recorded.";
             // 
             // BatteryMonitorForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(434, 312);
+            ClientSize = new Size(424, 197);
             Controls.Add(lblLastCharge);
-            Controls.Add(lblDeviceName);
             Controls.Add(groupBoxStatus);
             Controls.Add(btnRefresh);
             Controls.Add(lblChargingStatus);
-            Controls.Add(lblBatteryLevel);
+            Controls.Add(lblBattery);
             Controls.Add(batteryProgressBar);
-            Controls.Add(lblTitle);
             Controls.Add(menuStrip1);
-            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Segoe UI Variable Display", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
@@ -252,7 +224,6 @@
             contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
-
         }
     }
 }
