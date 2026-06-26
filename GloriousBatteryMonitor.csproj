@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.3.0</Version>
+    <Version>0.3.1</Version>
     <Description>A lightweight utility to monitor the battery level of your Glorious mouse.</Description>
     <ApplicationIcon>icon-100.ico</ApplicationIcon>
   </PropertyGroup>

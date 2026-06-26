@@ -39,6 +39,7 @@ A lightweight utility to monitor the battery of your Glorious mouse.
 ### Tested
 Devices that have been confirmed to work with the application:
 - Model D2 Pro 1k
+- Pulsar X3 Crazylight Mini
 
 ### Untested
 Devices that have not been tested but should work:
