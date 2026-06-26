@@ -14,7 +14,8 @@ public static class DeviceManager
         new ModelOProWireless(),
         new ModelOWireless(),
         new SeriesOneProWireless(),
-        new SeriesTwoProWireless()
+        new SeriesTwoProWireless(),
+        new PulsarX3CrazylightMini()
     };
 
     public static async Task<BatteryStatusResult> GetCurrentBatteryStatus()
